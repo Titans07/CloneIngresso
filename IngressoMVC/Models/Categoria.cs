@@ -12,5 +12,7 @@ namespace IngressoMVC.Models
         public DateTime DataAlteracao { get; set; }
 
         public string Categorias { get; set; }
+
+        public List<FilmeCategoria> FilmesCategorias { get; set; }
     }
 }
