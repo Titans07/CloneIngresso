@@ -1,10 +1,17 @@
 ﻿@model IEnumerable<Ator>
 
 <div class="row">
-    <div class="col-md-8 offset-md-2">
-        <table>
+    <div class="col-md-10 offset-md-1">
+        <h1>Atores - <a class="btn btn-dark" href="#">Cadastrar</a></h1>
+
+        <div class="col-12 my-2">
+            <input class="form-control" type="text" name="nome" id="nome" placeholder="Buscar ator(a)..." />
+        </div>
+
+        <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>Ações</th>
                     <th>Foto de Perfil</th>
                     <th>Nome</th>
                     <th>Biografia</th>
@@ -14,6 +21,15 @@
                 @foreach (var ator in Model)
                 {
                     <tr>
+                        <td>
+                            <div class="d-flex flex-column">
+                                <a class="btn btn-success" href="#"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
+                                <br />
+                                <a class="btn btn-danger" href="#"><i class="fa-solid fa-ban"></i> Excluir</a>
+                                <br />
+                                <a class="btn btn-primary" href="#"><i class="fa-solid fa-eye"></i> Ver</a>
+                            </div>
+                        </td>
                         <td class="align-middle"><img src="@ator.FotoPerfilURL" alt="@ator.Nome"></td>
                         <td class="align-middle">@ator.Nome</td>
                         <td class="align-middle">@ator.Bio</td>
@@ -21,5 +37,6 @@
                 }
             </tbody>
         </table>
+
     </div>
 </div>
