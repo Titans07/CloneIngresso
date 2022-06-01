@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<Ator>
 
+@{ 
+    @ViewData["Title"] = "Índice Atores";
+}
+
 <div class="row">
     <div class="col-md-10 offset-md-1">
         <h1>Atores - <a class="btn btn-dark" href="#">Cadastrar</a></h1>
@@ -12,9 +16,9 @@
             <thead>
                 <tr>
                     <th>Ações</th>
-                    <th>Foto de Perfil</th>
-                    <th>Nome</th>
-                    <th>Biografia</th>
+                    <th>@Html.DisplayNameFor(model => model.FotoPerfilURL)</th>
+                    <th>@Html.DisplayNameFor(Model => Model.Nome)</th>
+                    <th>@Html.DisplayNameFor(Model => Model.Bio)</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,11 +27,11 @@
                     <tr>
                         <td>
                             <div class="d-flex flex-column">
-                                <a class="btn btn-success" href="#"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
+                                <a class="btn btn-success" asp-action="Atualizar" asp-route-id="@ator.Id"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
                                 <br />
-                                <a class="btn btn-danger" href="#"><i class="fa-solid fa-ban"></i> Excluir</a>
+                                <a class="btn btn-danger" asp-action="Deletar" asp-route-id="@ator.Id"><i class="fa-solid fa-ban"></i> Excluir</a>
                                 <br />
-                                <a class="btn btn-primary" href="#"><i class="fa-solid fa-eye"></i> Ver</a>
+                                <a class="btn btn-primary" asp-action="Detalhes" asp-route-id="@ator.Id"><i class="fa-solid fa-eye"></i> Ver</a>
                             </div>
                         </td>
                         <td class="align-middle"><img src="@ator.FotoPerfilURL" alt="@ator.Nome"></td>

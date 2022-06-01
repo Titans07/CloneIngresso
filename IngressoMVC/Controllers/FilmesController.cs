@@ -12,6 +12,36 @@ namespace IngressoMVC.Controllers
     {
         private IngressoDbContext _context;
 
+        public FilmesController(IngressoDbContext context)
+        {
+            _context = context;
+        }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Detalhes()
+        {
+            return View();
+        }
+
+        public IActionResult Deletar()
+        {
+            return View();
+        }
+
+        public IActionResult Criar()
+        {
+            return View();
+        }
+
+        public IActionResult Atualizar()
+        {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult<List<Filme>> ListarFilmes()
             => Ok(_context.Filmes.ToList());
