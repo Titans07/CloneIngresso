@@ -1,1 +1,38 @@
-﻿<h1>CATEGORIAS INDEX</h1>
+﻿@model IEnumerable<Categoria>
+
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <h1>Atores - <a class="btn btn-dark" asp-action="Criar">Cadastrar</a></h1>
+
+        <div class="col-12 my-2">
+            <input class="form-control" type="text" name="nome" id="nome" placeholder="Buscar ator(a)..." />
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Ações</th>
+                    <th>@Html.DisplayNameFor(Model => Model.Nome)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var categoria in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="d-flex flex-column">
+                                <a class="btn btn-success" asp-action="Atualizar" asp-route-id="@categoria.Id"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
+                                <br />
+                                <a class="btn btn-danger" asp-action="Deletar" asp-route-id="@categoria.Id"><i class="fa-solid fa-ban"></i> Excluir</a>
+                                <br />
+                                <a class="btn btn-primary" asp-action="Detalhes" asp-route-id="@categoria.Id"><i class="fa-solid fa-eye"></i> Ver</a>
+                            </div>
+                        </td>
+                        <td class="align-middle">@categoria.Nome</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

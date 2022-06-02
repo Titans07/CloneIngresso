@@ -1,4 +1,6 @@
 ﻿using IngressoMVC.Data;
+using IngressoMVC.Models;
+using IngressoMVC.Models.ViewModels.Request;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,7 +20,7 @@ namespace IngressoMVC.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(_context.Categorias);
         }
 
         public IActionResult Detalhes()
@@ -34,6 +36,17 @@ namespace IngressoMVC.Controllers
         public IActionResult Criar()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Criar(PostCategoriaDTO categoriaDto)
+        {
+            Categoria categoria = new Categoria(categoriaDto.Nome);
+
+            _context.Categorias.Add(categoria);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Atualizar()

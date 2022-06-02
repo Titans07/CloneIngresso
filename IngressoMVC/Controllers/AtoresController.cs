@@ -1,4 +1,6 @@
 ﻿using IngressoMVC.Data;
+using IngressoMVC.Models;
+using IngressoMVC.Models.ViewModels.Request;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -30,6 +32,19 @@ namespace IngressoMVC.Controllers
         public IActionResult Criar()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Criar([Bind("Nome,Bio,FotoPerfilURL")] PostAtorDTO atorDto)
+        {
+            //validar os dados
+            Ator ator = new Ator(atorDto.Nome, atorDto.Bio, atorDto.FotoPerfilURL);
+            //gravar esse ator no banco de dados
+            _context.Atores.Add(ator);
+
+            //salva ras mudanças
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Atualizar(int id)
